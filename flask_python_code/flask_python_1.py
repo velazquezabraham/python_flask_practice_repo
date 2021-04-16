@@ -11,13 +11,13 @@
 from flask import Flask, redirect, url_for, render_template
 
 #create an app
-app = Flask(__name__) #__name__ is a key word
+#__name__ is a key word
+app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello! This is the main page <h1>Hello</h1>"
+    return render_template("index.html")
 
 #run the app
 if __name__ == "__main__":
     app.run()
-
