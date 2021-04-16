@@ -2,41 +2,38 @@
 #Project: flask_python_1.py
 #Description: 
 #       This project will have an intro to using Flask, flask is a micro 
-#       framework to set up websites (from my understanding)
+#       framework to set up websites (from my understanding) tutorial 1
+#       working with templates tutorial 2
+
+
+
 
 #import flask tools
 from flask import Flask, redirect, url_for
 
 #create an app
-app = Flask(__name__)
+app = Flask(__name__) #__name__ is a key word
 
-#give flask a route to access this page
 @app.route("/")
-
-#create the pages that are going to be in the website
-#this will return an inline HTML
 def home():
-    return "Hello this is the home function <h1>Hello</h1>"
+    return "Hello! This is the main page <h1>Hello<h1>"
 
-#creating another page aka function
-#first we need to give it a route
+#route will pass a variable to user()
+#user() wi;; return an f string only available ion python3
 @app.route("/<name>")
-def user(name):
-    return f"Hi this is the user function {names}!"
+def user(name): 
+    return f"Hello {name}!" 
 
-#creating another page aka function for admin only.
-#if not an admin, the we will REDERECT to a different page
-#first I will route it
-#Then, we use the redirect function and give it the argument
-#with the url_for of the home page aka the name of the function
-#we want them to go
-@app.route("/admin/") #add another slash after admin to know go there when added in url
+#admin() will send the user to another website aka 'user' using the redirect
+#function- the redirect function takes as input the name of the website to be
+#re-directed to.
+#The user function takes an argument called 'name', therefor we need to make 
+#sure we pass an argument named 'name' and its value will be  "Admin"
+@app.route("/admin/")#added slash at the end to work with slash or no slash
 def admin():
-    return redirect(url_for("home", name = "Admin!"))
+    return redirect(url_for("user", name = "Admin"))
 
-
-
-#run app and start a website
+#run the app
 if __name__ == "__main__":
     app.run()
 
