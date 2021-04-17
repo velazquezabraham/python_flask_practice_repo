@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Login Page {% endblock %}
+
+<!-- we use forms to send and get information with get and post to the website-->
+<!-- an action this form is going to take is just a url that we want to redirect to once this form is submitted. -->
+<!-- We use the # sign to redirect to the same url that we're in. Use post because we're posting info not getting-->
+<!-- If we use get, that means we want to get info and put it in our form that we're creating-->
+{% block content %}
+<form action="#" method="post">
+    <p>Name:</p>
+    <p><input type="text" name="nm" /></p>
+    <p><input type="submit" value="submit" /></p>
+</form>
+{% endblock %}
