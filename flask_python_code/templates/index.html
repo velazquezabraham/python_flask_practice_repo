@@ -1,13 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        <title>This is the title</title>
-    </head>
-    <body>
-        <h1>Home Page of {{urltag}}</h1>
-        <p> Displaying a list </p>
-        {% for x in content %}
-            <p>{{x}}</p>
-        {% endfor %}
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %} Home Page from index.html {% endblock %}
+{% block content %}
+<h1>Test from index.html</h1>>
+{% endblock %}
