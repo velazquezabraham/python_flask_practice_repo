@@ -1,10 +1,13 @@
 <!doctype html>
 <html>
     <head>
-        <title>Home page</title>
+        <title>This is the title</title>
     </head>
     <body>
-        <h1>Home Page</h1>
-        <p>Hello!</p>
+        <h1>Home Page of {{urltag}}</h1>
+        <p> Displaying a list </p>
+        {% for x in content %}
+            <p>{{x}}</p>
+        {% endfor %}
     </body>
 </html>
