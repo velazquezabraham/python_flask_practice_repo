@@ -18,3 +18,4 @@
 #	create secret key app.secret_key = "whatever"
 #	store data in login
 #	reference data in user, redirect if key session empty,
+#	added a timedelta to set how long our session will last
