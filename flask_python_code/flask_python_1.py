@@ -8,11 +8,14 @@
 
 #import flask tools
 #added render_template to render html files and render them as our web pages
-from flask import Flask, redirect, url_for, render_template, request
+#imported session
+from flask import Flask, redirect, url_for, render_template, request, session
 
 #create an app
 #__name__ is a key word
 app = Flask(__name__)
+app.secret_key = "HI" 
+#create secret key to encrypt and decrypt data saved in server
 
 #We use get request by default 
 @app.route("/")
@@ -24,15 +27,30 @@ def home():
 @app.route("/login", methods=["POST", "GET"])
 def logic():
     if request.method == "POST": #make sure you use capitals
-        user == request.form["nm"]#use the same variable name from the html login to use the same value. This only works with request POST
-        return redirect(url_for("user", usr=user))#passig the user value to the user func
+        user = request.form["nm"]#use the same variable name from the html login to use the same value. This only works with request POST
+        session["user"] = user #STORE DATA  set up some data for our session as a dictionary
+        return redirect(url_for("user"))#No need to pass the user value
     else:
         return render_template("login.html")
 
-@app.route("/<usr>")
-def user(usr):
-    return f"<h1>in user function {usr}</h1>"
+ #RETRIEVE DATA Before referencing to the session dictionary key, Check that the user 
+ #logged in, and No need for a parameter.
+@app.route("/user/") 
+def user():
+    if "user" in session:      
+        user = session["user"]
+        return f"<h1>in user function {user}</h1>"
+    else:
+        return redirect(url_for("login"))
 
 #run the app
 if __name__ == "__main__":
     app.run(debug=True)
+
+    #Sessions- pass information from our back end to from end, temporary, stored on web server, 
+    #there for quick access of info between all of the different pages of website. Load in, use
+    #it while user in website, deasapears when they leave.
+    #import session
+    #create secret key app.secret_key = "whatever"
+    #store data in login
+    #reference data in user, redirect if key session empty,

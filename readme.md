@@ -8,3 +8,13 @@
 #	Sending info to our service or our clients
 #	Get - most common, but insecure. Usually pased through the url bar or use to redirect a link 
 #	POST - More secure way,
+#TUTORIAL 5 - SESSIONS
+#	Sessions- pass information from our back end to from end,
+#	temporary, stored on web server, 
+#   	there for quick access of info between all of the different pages
+#	of website. Load in, use it while user in website, deasapears when
+#	they leave.
+#	import session
+#	create secret key app.secret_key = "whatever"
+#	store data in login
+#	reference data in user, redirect if key session empty,
