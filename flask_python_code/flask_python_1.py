@@ -10,7 +10,7 @@
 #added render_template to render html files and render them as our web pages
 #imported session
 #impirted timedelta to set how long we want our session to last for
-from flask import Flask, redirect, url_for, render_template, request, session
+from flask import Flask, redirect, url_for, render_template, request, session, flash
 from datetime import timedelta
 
 
@@ -18,7 +18,7 @@ from datetime import timedelta
 #__name__ is a key word
 app = Flask(__name__)
 app.secret_key = "HI" 
-app.permenent_session_lifetime = timedelta(days=5)
+app.permenent_session_lifetime = timedelta(minutes=5)
 
 #create secret key to encrypt and decrypt data saved in server
 
@@ -35,9 +35,11 @@ def login():
         session.permenent = True #default is false
         user = request.form["nm"]#use the same variable name from the html login to use the same value. This only works with request POST
         session["user"] = user #STORE DATA  set up some data for our session as a dictionary
+        flash(f"You have successfully logged in, {user}")
         return redirect(url_for("user"))#No need to pass the user value
     else:
         if "user" in session:
+            flash("Already logged in!")
             return redirect(url_for("user"))
 
         return render_template("login.html")
@@ -48,13 +50,15 @@ def login():
 def user():
     if "user" in session:      
         user = session["user"]
-        return f"<h1>in user function {user}</h1>"
+        return render_template("user.html", user=user)#passing user to front-end
     else:
+        flash("You are not logged in!")
         return redirect(url_for("login"))
 
 
-@app.route("/logout")
+@app.route("/logout/")
 def logout():
+    flash("You have been logged out", "info") #Message and category
     session.pop("user", None) #remove data from session
     return redirect(url_for("login"))
 

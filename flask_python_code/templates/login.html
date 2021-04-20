@@ -6,6 +6,13 @@
 <!-- We use the # sign to redirect to the same url that we're in. Use post because we're posting info not getting-->
 <!-- If we use get, that means we want to get info and put it in our form that we're creating-->
 {% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 <form action="#" method="post">
     <p>Name:</p>
     <p><input type="text" name="nm" /></p>

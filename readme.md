@@ -19,3 +19,5 @@
 #	store data in login
 #	reference data in user, redirect if key session empty,
 #	added a timedelta to set how long our session will last
+#TUTORIAL 6
+#	-Flash message importing flash and using flash function
