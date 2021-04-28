@@ -21,3 +21,13 @@
 #	added a timedelta to set how long our session will last
 #TUTORIAL 6
 #	-Flash message importing flash and using flash function
+#
+#TUTORIAL 7
+#	-Using SQLAIchemy Database
+#	-username will go to a loging page
+#		-edit and save their info into a database
+#	Grabbing information from the post form and saving it onto database
+#	Easier to write information in python code rather than getting SQL queries
+#	Added email request 
+#TUTORIAL 8
+#	 
